@@ -1,0 +1,58 @@
+[
+    {
+        "items": [
+            {
+                "id": 1,
+                "name": "My projects",
+                "extension": "folder",
+                "items": [
+                    3,
+                    4
+                ]
+            },
+            {
+                "id": 2,
+                "name": "About me",
+                "extension": "aboutme"
+            },
+            {
+                "id": 3,
+                "name": "NodeJS Discord bot",
+                "extension": "project"
+            },
+            {
+                "id": 4,
+                "name": "Test",
+                "extension": "folder",
+                "items": [
+                    1,
+                    2
+                ]
+            }
+        ]
+    },
+    {
+        "icons": [
+            {
+                "extension": "folder",
+                "icon": "./icons/folder.png"
+            },
+            {
+                "extension": "file",
+                "icon": "./icons/file.png"
+            },
+            {
+                "extension": "project",
+                "icon": "./icons/file.png"
+            },
+            {
+                "extension": "aboutme",
+                "icon": "./icons/aboutme.png"
+            },
+            {
+                "extension": "image",
+                "icon": "./icons/image.png"
+            }
+        ]
+    }
+]

@@ -1,0 +1,537 @@
+* {
+  font-size: 17px;
+  font-family: sans-serif;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+body {
+  height: 100vh;
+  max-height: 100vh;
+  max-width: 100vw;
+  overflow: hidden;
+  background-color: teal;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+.taskbar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  padding: 5px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  background-color: silver;
+}
+
+.taskbar .taskbar__left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.taskbar .taskbar__left .start {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-right: 10px;
+  padding: 4px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: white gray gray white;
+  -webkit-box-shadow: #dfdfdf 1px 1px inset, black 1px 0px, black 0px 1px, black 1px 1px;
+          box-shadow: #dfdfdf 1px 1px inset, black 1px 0px, black 0px 1px, black 1px 1px;
+  cursor: pointer;
+}
+
+.taskbar .taskbar__left .start img {
+  margin-right: 4px;
+}
+
+.taskbar .taskbar__left .start span {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  font-weight: bold;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.taskbar .taskbar__left .program {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  width: 200px;
+  margin-left: 6px;
+  padding: 4px;
+  border-top: 2px solid white;
+  border-left: 2px solid white;
+  border-bottom: 2px solid black;
+  border-right: 2px solid black;
+  background-color: #BDBEBD;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  overflow: hidden;
+  white-space: nowrap;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAG0lEQVQYV2M8cODAf3t7ewbG/////z948CADAFuqCj64BtLKAAAAAElFTkSuQmCC);
+}
+
+.taskbar .taskbar__left .program.focus {
+  border-top: 1px solid #000;
+  border-left: 1px solid #000;
+  border-bottom: 2px solid white;
+  border-right: 2px solid white;
+  -webkit-box-shadow: inset 1px 1px grey;
+          box-shadow: inset 1px 1px grey;
+}
+
+.taskbar .taskbar__left .program img {
+  margin: 2px 3px 0 5px;
+}
+
+.taskbar .taskbar__left .program span {
+  margin-top: 2px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.taskbar .taskbar__right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 6px;
+}
+
+.taskbar .taskbar__right .hour {
+  padding: 7px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: gray white white gray;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.item-container {
+  max-height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.item-container.desktop {
+  padding: 25px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-line-pack: start;
+      align-content: start;
+}
+
+.item-container.desktop .item {
+  margin: 15px;
+  z-index: 1;
+}
+
+.item-container.desktop .item span {
+  color: white;
+}
+
+.item-container.desktop .headline {
+  position: absolute;
+  top: calc(50% - 40px);
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 450px;
+  opacity: .85;
+  text-align: center;
+}
+
+.item-container.desktop .headline h1 {
+  font-size: 4rem;
+}
+
+.item-container.folder {
+  padding-left: 15px;
+  padding-top: 5px;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.item-container .item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 40px;
+  margin-right: 60px !important;
+  cursor: pointer;
+}
+
+.item-container .item span {
+  margin-top: 5px;
+  text-align: center;
+}
+
+.item-container .item img {
+  width: 48px;
+  height: 48px;
+}
+
+.item-container .item a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.window {
+  position: absolute;
+  width: 700px;
+  height: 350px;
+  min-width: 500px;
+  min-height: 300px;
+  background-color: #BDBEBD;
+  border-left: 1px solid white;
+  border-bottom: 1px solid black;
+  border-top: 1px solid white;
+  border-right: 1px solid black;
+  -webkit-box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.3);
+          box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+.window:not(.dragging), .window:not(.resizing) {
+  -webkit-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+}
+
+.window.dragging, .window.resizing {
+  -webkit-transition: none;
+  transition: none;
+}
+
+.window.focus {
+  z-index: 2;
+}
+
+.window.focus .window__header {
+  background: -webkit-gradient(linear, left top, right top, from(#000080), to(#1084d0));
+  background: linear-gradient(to right, #000080, #1084d0);
+}
+
+.window.maximised {
+  position: absolute;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: calc(100% - 40px) !important;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.window.maximised .window__inner > .window__header > .maximise {
+  background-image: url(".././icons/restore_down.png");
+  background-position: 47% 50%;
+}
+
+.window.maximised .window__content {
+  height: calc(100% - 30px);
+}
+
+.window.maximised .window__footer {
+  display: none;
+}
+
+.window .window__inner {
+  position: relative;
+  border: 2px solid #BDBEBD;
+  height: 100%;
+}
+
+.window .window__header {
+  background: #7f787f;
+  overflow: auto;
+  padding: 2px;
+}
+
+.window .window__header p {
+  color: white;
+  vertical-align: middle;
+  display: inline;
+  overflow: hidden;
+  white-space: nowrap;
+  padding-top: 5px;
+  padding-left: 3px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.window .window__header .window__icon {
+  vertical-align: middle;
+  margin: 2px 5px;
+}
+
+.window .window__header .window__action {
+  width: 20px;
+  height: 20px;
+  background-color: #BDBEBD;
+  float: right;
+  border-top: 1px solid white;
+  border-left: 1px solid white;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  text-align: center;
+  margin-top: 3px;
+  margin-right: 3px;
+  margin-bottom: 3px;
+}
+
+.window .window__header .window__action.close {
+  background-image: url(".././icons/close.png");
+  background-size: auto 100%;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
+
+.window .window__header .window__action.maximise {
+  background-image: url(".././icons/maximise.png");
+  background-size: auto 80%;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
+
+.window .window__header .window__action.minimise {
+  background-image: url(".././icons/minimise.png");
+  background-size: auto 100%;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
+
+.window .window__content {
+  margin-top: 2px;
+  padding: 4px;
+  border: 2px solid #808080;
+  border-bottom: 2px solid white;
+  border-right: 2px solid white;
+  width: 100%;
+  height: calc(100% - 50px);
+  word-wrap: break-word;
+  overflow-y: auto;
+  background-color: #e2e2e2;
+}
+
+.window .window__content:not(.image) {
+  overflow-x: hidden;
+}
+
+.window .window__footer {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  height: 20px;
+  border: 2px solid #808080;
+  border-bottom: 2px solid white;
+  border-right: 2px solid white;
+  overflow: hidden;
+}
+
+.window .window__footer .resize {
+  height: 20px;
+  width: 20px;
+  margin-top: -2px;
+  background: url(".././icons/resize.png") no-repeat;
+  background-position: right;
+  background-size: contain;
+  cursor: se-resize;
+}
+
+.project .project__title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #808080;
+  font-size: 25px;
+}
+
+.project .project__links {
+  margin-left: 10px;
+}
+
+.project .project__links a img {
+  margin-top: 15px;
+  width: 40px;
+}
+
+.project .project__tags {
+  display: inline-block;
+  width: 100%;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border-bottom: 1px solid #808080;
+}
+
+.project .project__tags .tags__inner {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.project .project__tags .tags__inner .tag {
+  display: inline-block;
+  background-color: #a5a5ff;
+  padding: 10px;
+  margin: 5px;
+  text-align: center;
+}
+
+.project .project__description {
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.project .project__description p {
+  margin-bottom: 15px;
+}
+
+.project .project__description ol {
+  list-style: decimal;
+  padding: revert;
+}
+
+.project .project__description .gallery {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.project .project__description .gallery p {
+  text-align: center;
+  margin: 0;
+  padding: 10px;
+}
+
+.project .project__description .gallery .gallery-items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.project .project__description .gallery .gallery-items .item {
+  width: 30%;
+  margin-bottom: 10px;
+}
+
+.project .project__description .gallery .gallery-items .item img {
+  width: 100%;
+  height: auto;
+}
+
+.project * {
+  -webkit-user-select: text;
+     -moz-user-select: text;
+      -ms-user-select: text;
+          user-select: text;
+}
+
+.blue-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  display: block;
+  background: #000080;
+}
+
+.blue-screen * {
+  color: white;
+  font-size: 18px;
+}
+
+.blue-screen p {
+  margin: 20px;
+}
+
+.blue-screen a {
+  border-bottom: 2px solid white;
+}
+/*# sourceMappingURL=main.css.map */
